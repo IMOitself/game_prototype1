@@ -8,8 +8,6 @@ import android.graphics.Paint;
 
 public class GameView extends View{
     
-    int currState = 0;
-    
     GameView(Context mContext){
         super(mContext);
         init();
@@ -19,8 +17,6 @@ public class GameView extends View{
         setOnClickListener(new OnClickListener(){
             @Override
             public void onClick(View v){
-                currState++;
-                if(currState >= 3) currState = 0;
                 invalidate();
             }
         });
@@ -34,24 +30,8 @@ public class GameView extends View{
         
         float centerX = viewWidth / 2;
         float centerY = viewHeight / 2;
-        
-        float rectWidth = 0, rectHeight = 0;
-        
-        switch(currState){
-            case 0:
-                rectWidth = viewWidth * 1/2;
-                rectHeight = viewHeight * 1/2;
-                break;
-            
-            case 1:
-                rectWidth = viewWidth * 1/3;
-                rectHeight = viewHeight * 1/3;
-                break;
-                
-            case 2:
-                rectWidth = viewWidth * 1/4;
-                rectHeight = viewHeight * 1/4;
-        }
+        float rectWidth = viewWidth * 1/3;
+        float rectHeight = viewHeight * 1/3;
         
         RectF rectangle = new RectF();
         float left = centerX - (rectWidth/2);
